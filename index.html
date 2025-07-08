@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈️ 강원도 고성 여행 계획</title>
+    <meta property="og:title" content="✈️ 강원도 고성 여행 계획">
+    <meta property="og:description" content="2025년 7월 11일-12일 강원도 고성 여행!">
+    <meta property="og:type" content="website">
+    
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap");
+
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #42a5f5;
+            --accent-color: #ff6b6b;
+            --accent-secondary: #4ecdc4;
+            --success-color: #51cf66;
+            --warning-color: #ffd93d;
+            --dark-color: #1a1c3d;
+            --light-color: #f7f9fc;
+            --gray-light: #e9ecef;
+            --gray-medium: #8b95a1;
+            --gray-dark: #495057;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+            color: var(--dark-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--spacing-md);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            padding: var(--spacing-2xl) var(--spacing-md);
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, -30px) rotate(180deg); }
+        }
+
+        header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 18px;
+            font-weight: 500;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .day-divider {
+            display: flex;
+            align-items: center;
+            margin: var(--spacing-2xl) 0 var(--spacing-lg);
+            position: relative;
+        }
+
+        .day-badge {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: var(--shadow-md);
+            white-space: nowrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .day-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right, var(--gray-light), transparent);
+            margin-left: var(--spacing-md);
+        }
+
+        .schedule-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .schedule-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .schedule-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .schedule-item.highlight {
+            background: linear-gradient(to right, rgba(78, 205, 196, 0.05), var(--white));
+        }
+
+        .schedule-time {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: var(--dark-color);
+            font-weight: 700;
+            font-size: 16px;
+            padding: var(--spacing-sm) var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .time-icon {
+            width: 20px;
+            height: 20px;
+            stroke: var(--primary-color);
+        }
+
+        .schedule-content {
+            padding: var(--spacing-md);
+        }
+
+        .place-name {
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: var(--spacing-xs);
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .place-category {
+            display: inline-block;
+            background: var(--accent-secondary);
+            color: var(--white);
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .place-details {
+            color: var(--gray-dark);
+            font-size: 15px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .price-tag {
+            display: inline-flex;
+            align-items: center;
+            background: var(--warning-color);
+            color: var(--dark-color);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: var(--spacing-xs);
+        }
+
+        .price-tag.discount {
+            background: var(--success-color);
+            color: var(--white);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-map {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+        }
+
+        .btn-map:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.5;
+        }
+
+        .budget-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-top: var(--spacing-2xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .budget-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .budget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .budget-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .budget-label {
+            font-size: 14px;
+            color: var(--gray-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .budget-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .info-section {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .info-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--dark-color);
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            padding: var(--spacing-xs) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            color: var(--gray-dark);
+        }
+
+        .info-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: 700;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: var(--spacing-sm);
+            }
+
+            header {
+                padding: var(--spacing-xl) var(--spacing-md);
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .place-name {
+                font-size: 18px;
+            }
+
+            .budget-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: var(--spacing-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏔️ 강원도 고성 여행 계획</h1>
+            <p>2025년 7월 11일 ~ 12일</p>
+        </header>
+
+        <!-- Day 1 -->
+        <div class="day-divider">
+            <span class="day-badge">Day 1 - 7월 11일(금)</span>
+            <div class="day-line"></div>
+        </div>
+
+        <ul class="schedule-list">
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    03:30
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">출발</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    05:30 ~ 06:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        휴게소
+                        <span class="place-category">휴식</span>
+                    </div>
+                    <div class="place-details">횡성, 치악 추천 (상황에 따라 2번 들름)</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-map" onclick="openMap('횡성휴게소')">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            횡성휴게소
+                        </button>
+                        <button class="btn btn-map" onclick="openMap('치악휴게소')">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            치악휴게소
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="schedule-item highlight">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    07:40 ~ 08:10
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        소노펠리체 숙소 도착
+                        <span class="place-category">체크인</span>
+                    </div>
+                    <div class="place-details">B동, 객실배정·키발급 대기</div>
+                    <div class="place-details">키오스크: 404>418>420(짝수방)</div>
+                    <div class="place-details" style="color: var(--accent-color); font-weight: 500;">⚠️ 필수 준비물: 카드!!!, 편한 옷, 속옷 등</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-map" onclick="openMap('강원도 고성군 토성면 미시령옛길 1153')">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            길찾기
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    08:10 ~ 09:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">소노펠리체 실내 탐색</div>
+                </div>
+            </li>
+
+            <li class="schedule-item highlight">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    09:00 ~ 10:30
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        인피니티풀
+                        <span class="place-category">액티비티</span>
+                    </div>
+                    <div class="place-details">East타워 11층</div>
+                    <div class="place-details" style="color: var(--primary-color); font-weight: 600;">운영시간: 09:00 ~ 17:00</div>
+                    <div class="place-details" style="color: var(--accent-color); font-weight: 500;">준비물: 수영복, 아쿠아슈즈</div>
+                    <div class="price-tag">55,000원</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    10:30 ~ 11:50
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        Lunch
+                        <span class="place-category">식사</span>
+                    </div>
+                    <div class="place-details">속초항아리 물회</div>
+                    <div class="price-tag">가격변동</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-map" onclick="openMap('속초항아리물회')">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            길찾기
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    11:50 ~ 12:10
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">객실 배정</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    12:10 ~ 13:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        실외 탐색
+                        <span class="place-category">관광</span>
+                    </div>
+                    <div class="place-details">울산바위</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-map" onclick="openMap('울산바위')">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            길찾기
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    13:20 ~ 14:50
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        더엠브로시아 카페
+                        <span class="place-category">카페</span>
+                    </div>
+                    <div class="place-details">EAST타워 10층</div>
+                    <div class="place-details">회원가입 할인(5%)</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    15:00 ~ 15:30
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">체크인</div>
+                </div>
+            </li>
+
+            <li class="schedule-item highlight">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    15:30 ~ 17:30
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        오션플레이
+                        <span class="place-category">액티비티</span>
+                    </div>
+                    <div class="place-details">소노펠리체 부대시설동 1층</div>
+                    <div class="place-details" style="color: var(--primary-color); font-weight: 600;">운영시간: 실내 10:00~18:00, 실외 10:00~17:00</div>
+                    <div class="place-details" style="color: var(--accent-color); font-weight: 500;">준비물: 수영복, 아쿠아슈즈</div>
+                    <div class="price-tag">42,420원</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    17:50 ~ 19:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        Dinner & Rest
+                        <span class="place-category">식사</span>
+                    </div>
+                    <div class="place-details">소노벨 B1층</div>
+                    <div class="place-details">식객-고기(졸비쌈) / 미시령테이블(한식) 등</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    19:00 ~ 22:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        부대시설 이용
+                        <span class="place-category">액티비티</span>
+                    </div>
+                    <div class="place-details">탁구·게임존·노래방 - 소노벨 B1층</div>
+                    <div class="place-details" style="color: var(--primary-color); font-weight: 600;">운영시간: 오락실 10:00~23:00, 노래방 17:00~01:00, 당구/탁구 13:00~24:00</div>
+                    <div class="price-tag">당구/탁구 10분당 3,000원</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    22:00 ~ 23:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">자유시간</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    23:00 ~ 05:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">취침</div>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Day 2 -->
+        <div class="day-divider">
+            <span class="day-badge">Day 2 - 7월 12일(토)</span>
+            <div class="day-line"></div>
+        </div>
+
+        <ul class="schedule-list">
+            <li class="schedule-item highlight">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    04:30 ~ 05:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        화진포 해수욕장 이동
+                        <span class="place-category">관광</span>
+                    </div>
+                    <div class="place-details" style="color: var(--accent-color); font-weight: 500;">준비물: 모자</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-map" onclick="openMap('화진포해수욕장')">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            길찾기
+                        </button>
+                    </div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    05:00 ~ 06:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">일출 구경 및 로밍</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    06:00 ~ 08:30
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">소노펠리체 숙소 복귀 및 휴식</div>
+                    <div class="place-details">짐정리 완료</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    08:40 ~ 09:40
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        Breakfast
+                        <span class="place-category">식사</span>
+                    </div>
+                    <div class="place-details">소노펠리체 B동 B2층 세비스키친</div>
+                    <div class="place-details" style="color: var(--primary-color); font-weight: 600;">운영시간: 1부 07:00-08:20, 2부 08:40-10:00, 3부 10:20-11:30</div>
+                    <div class="price-tag discount">43,000원 → 38,700원 (회원가입 할인 10%)</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    09:40 ~ 10:40
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">
+                        소노펠리체 사우나
+                        <span class="place-category">휴식</span>
+                    </div>
+                    <div class="place-details" style="color: var(--primary-color); font-weight: 600;">운영시간: 07:00 ~ 19:00 / 20:00</div>
+                    <div class="price-tag discount">17,000원 → 8,500원 (회원가입 할인 50%)</div>
+                </div>
+            </li>
+
+            <li class="schedule-item">
+                <div class="schedule-time">
+                    <svg class="time-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    10:40 ~ 11:00
+                </div>
+                <div class="schedule-content">
+                    <div class="place-name">퇴실준비</div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+    <div id="toast" class="toast">
+        주소가 복사되었습니다
+    </div>
+
+    <script>
+        function openMap(address) {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+                if (isIOS) {
+                    window.location.href = `maps://?q=${encodeURIComponent(address)}`;
+                } else {
+                    window.location.href = `geo:0,0?q=${encodeURIComponent(address)}`;
+                }
+            } else {
+                window.open(
+                    `https://map.naver.com/v5/search/${encodeURIComponent(address)}`,
+                    "_blank"
+                );
+            }
+        }
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
